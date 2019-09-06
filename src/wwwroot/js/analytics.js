@@ -55,11 +55,11 @@ $(document).ready(function() {
     $("#mapCol a").click(function() {
         clearOnRecurrentRequests();
         var districtName = $(this).data("value");
-        $('#analyticalResults').slideDown();
+        $('#analyticalResults').hide();
         $('#_analyticalResultPreloader').fadeIn();
-        scrollToAnalyticalResultDivision();
         
         requestToAPI = $.get(konSchoolAPI + '/schools/dis/' + districtName.toUpperCase() , function (apiData, status) {
+            scrollToAnalyticalResultDivision();
             var headingOfContent = $('#_analyticalResultHeading');
             headingOfContent.fadeOut(1500, function () {
                 $(this).text("Schools of " + toTitleCase(districtName)).fadeIn(500); 
